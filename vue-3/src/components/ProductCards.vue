@@ -17,7 +17,7 @@
         <font-awesome-icon
           v-if="isLoggedIn"
           class="icon action"
-          icon="fa-solid fa-cart-plus"
+          :icon="['fas', 'cart-plus']"
           v-on:click="addToCart(product)"
           title="Add item to cart"
         />

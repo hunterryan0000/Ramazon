@@ -26,7 +26,7 @@
       >
         <font-awesome-icon
           class="dismiss-message-icon"
-          icon="fa-solid fa-xmark"
+          :icon="['fas', 'xmark']"
           title="Dismiss message"
           v-if="$store.state.message.text"
           v-on:click="$store.commit('CLEAR_MESSAGE')"

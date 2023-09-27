@@ -19,7 +19,7 @@
 <template>
   <font-awesome-icon
     v-bind:style="{ opacity: spin ? 1 : 0 }"
-    icon="fa-solid fa-rotate"
+    :icon="['fas', 'rotate']"
     class="load-spinner fa-spin"
   />
 </template>

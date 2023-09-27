@@ -5,7 +5,7 @@
         Shopping Cart <loading-spinner id="spinner" v-bind:spin="isLoading" />
       </h1>
       <button id="clear-cart" v-on:click="clearCart">
-        <font-awesome-icon icon="fa-solid fa-trash-can" /> Clear Cart
+        <font-awesome-icon :icon="['fas', 'trash-can']" /> Clear Cart
       </button>
     </div>
     <table id="cart-table">
@@ -43,7 +43,7 @@
           <td class="actions">
             <font-awesome-icon
               class="icon delete-action"
-              icon="fa-solid fa-xmark"
+              :icon="['fas', 'fa-xmark']"
               title="Remove from cart"
               v-on:click="removeItem(item.cartItemId)"
             />

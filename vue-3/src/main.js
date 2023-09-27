@@ -4,6 +4,16 @@ import { createStore } from './store'
 import router from './router'
 import axios from 'axios'
 
+/* import fontawesome core */
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faCartPlus, faTrashCan, faXmark, faMagnifyingGlass, faRotate, faTable, faGrip } 
+  from '@fortawesome/free-solid-svg-icons';
+
+// Add all the icons to the library in one call
+library.add(faCartPlus, faTrashCan, faXmark, faMagnifyingGlass, faRotate, faTable, faGrip);
+
+
 /* sets the base url for server API communication with axios */
 axios.defaults.baseURL = import.meta.env.VITE_REMOTE_API;
 
@@ -25,6 +35,7 @@ if (currentToken) {
 const store = createStore(currentToken, currentUser);
 
 const app = createApp(CapstoneApp);
+app.component('font-awesome-icon', FontAwesomeIcon);
 app.use(store);
 app.use(router);
 app.mount('#app');

@@ -9,13 +9,13 @@
         <font-awesome-icon
           v-bind:class="{ 'view-icon': true, active: cardView }"
           v-on:click="cardView = true"
-          icon="fa-solid fa-grip"
+          :icon="['fas', 'grip']"
           title="View tiles"
         />
         <font-awesome-icon
           v-bind:class="{ 'view-icon': true, active: !cardView }"
           v-on:click="cardView = false"
-          icon="fa-solid fa-table"
+          :icon="['fas', 'table']"
           title="View table"
         />
         <!-- Add search box w/ buttons -->
@@ -35,7 +35,7 @@
             tabindex="-1"
           >
             <font-awesome-icon
-              icon="fa-solid fa-magnifying-glass"
+              :icon="['fas', 'magnifying-glass']"
               title="Search"
             />
           </button>
