@@ -33,10 +33,12 @@ public class JWTFilter extends GenericFilterBean {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
             throws IOException, ServletException {
+//        Casts the ServletRequest to HttpServletRequest to work with HTTP-specific methods.
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
+//        Resolve the Token: Calls resolveToken() to fetch the JWT token from the request header.
         String jwt = resolveToken(httpServletRequest);
         String requestURI = httpServletRequest.getRequestURI();
-
+//        If the JWT exists and is valid, then the associated Authentication object is retrieved and stored in the security context.
         if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
             Authentication authentication = tokenProvider.getAuthentication(jwt);
             SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -49,6 +51,7 @@ public class JWTFilter extends GenericFilterBean {
     }
 
     private String resolveToken(HttpServletRequest request) {
+//         Fetches the Authorization header and extracts the actual JWT token from the header.
         String bearerToken = request.getHeader(AUTHORIZATION_HEADER);
         if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {
             return bearerToken.substring(7);

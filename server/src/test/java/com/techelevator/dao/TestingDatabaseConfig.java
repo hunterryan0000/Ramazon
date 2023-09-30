@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 import java.sql.SQLException;
 import java.util.Objects;
 
-@Configuration
+@Configuration // Indicates that this class is a source of bean definitions
 public class TestingDatabaseConfig {
     // To use an existing PostgreSQL database, set the following environment variables.
     // Otherwise, a temporary database will be created on the local machine.
@@ -33,10 +33,11 @@ public class TestingDatabaseConfig {
     private SingleConnectionDataSource adminDataSource;
     private JdbcTemplate adminJdbcTemplate;
 
-    @PostConstruct
+    @PostConstruct // Called after the Spring container is done with all the bean initialization and dependency injection.
     public void setup() {
         if (System.getenv("DB_HOST") == null) {
-            adminDataSource = new SingleConnectionDataSource();
+            // Code to set up adminDataSource and adminJdbcTemplate
+            adminDataSource = new SingleConnectionDataSource(); // For admin tasks
             adminDataSource.setUrl("jdbc:postgresql://localhost:5432/postgres");
             adminDataSource.setUsername("postgres");
             adminDataSource.setPassword("postgres1");
@@ -51,7 +52,7 @@ public class TestingDatabaseConfig {
     @Bean
     public DataSource dataSource() throws SQLException {
         if(ds != null) return ds;
-
+        // ... Code to set up dataSource and load SQL scripts
         SingleConnectionDataSource dataSource = new SingleConnectionDataSource();
         dataSource.setUrl(String.format("jdbc:postgresql://%s:%s/%s", DB_HOST, DB_PORT, DB_NAME));
         dataSource.setUsername(DB_USER);
@@ -68,9 +69,10 @@ public class TestingDatabaseConfig {
     @PreDestroy
     public void cleanup() throws SQLException {
         if (adminDataSource != null) {
+            // ... Code to drop database and clean up resources
             adminJdbcTemplate.update("DROP DATABASE \"" + DB_NAME + "\";");
             adminDataSource.getConnection().close();
-            adminDataSource.destroy();
+            adminDataSource.destroy(); //cleans up resources
         }
     }
 }

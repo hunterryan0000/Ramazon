@@ -14,8 +14,11 @@ public class JWTConfigurer extends SecurityConfigurerAdapter<DefaultSecurityFilt
     }
 
     @Override
-    public void configure(HttpSecurity http) {
+    public void configure(HttpSecurity http) { //This overridden method configures the Spring Security filter chain.
         JWTFilter customFilter = new JWTFilter(tokenProvider);
+
+// Adding the Filter to the Chain: Then, http.addFilterBefore() method is called to add this custom filter into the Spring Security filter chain.
         http.addFilterBefore(customFilter, UsernamePasswordAuthenticationFilter.class);
+        // This ensures that your JWTFilter will be executed before the built-in UsernamePasswordAuthenticationFilter
     }
 }

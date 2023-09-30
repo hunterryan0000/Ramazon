@@ -20,7 +20,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.stream.Collectors;
 
-@Component
+@Component //Spring annotation to indicate that this class is a Spring component and should be discovered by Spring's component scanning. Its instance will be managed by the Spring container.
 public class TokenProvider implements InitializingBean {
 
     private final Logger log = LoggerFactory.getLogger(TokenProvider.class);
@@ -44,12 +44,14 @@ public class TokenProvider implements InitializingBean {
     }
 
     @Override
-    public void afterPropertiesSet() {
+    public void afterPropertiesSet() { //Override from InitializingBean
+        //Decodes the base64 secret and initializes the key for signing JWTs.
         byte[] keyBytes = Decoders.BASE64.decode(base64Secret);
         this.key = Keys.hmacShaKeyFor(keyBytes);
     }
 
     public String createToken(Authentication authentication, boolean rememberMe) {
+        //Creates a JWT token based on the user's authentication and remember-me status.
         String authorities = authentication.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.joining(","));
