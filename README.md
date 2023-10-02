@@ -1,7 +1,7 @@
 # Ramazon: Your All-in-One Online Shopping Experience
 
 ## Table of Contents
-1. [About the Project](#about-the-project)
+1. [About The Project](#about-the-project)
 2. [Tech Stack](#tech-stack)
 3. [Features](#features)
 4. [Use Cases](#use-cases)
