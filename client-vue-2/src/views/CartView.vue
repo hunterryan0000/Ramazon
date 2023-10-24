@@ -107,7 +107,7 @@ export default {
             "Getting cart was unsuccessful: " +
             (response ? response.message : "Could not reach server");
           this.$store.commit("SET_ERROR", message);
-          console.error(message);
+          // console.error(message);
         });
     },
     removeItem(itemId) {
@@ -126,7 +126,7 @@ export default {
             "Removing item from cart was unsuccessful: " +
             (response ? response.message : "Could not reach server");
           this.$store.commit("SET_ERROR", message);
-          console.error(message);
+          // console.error(message);
         });
     },
     clearCart() {
@@ -145,7 +145,7 @@ export default {
             "Clear cart was unsuccessful: " +
             (response ? response.message : "Could not reach server");
           this.$store.commit("SET_ERROR", message);
-          console.error(message);
+          // console.error(message);
         });
     },
     currency(value) {
