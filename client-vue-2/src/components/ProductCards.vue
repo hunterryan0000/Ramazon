@@ -65,7 +65,7 @@ export default {
             "Add item was unsuccessful: " +
             (response ? response.message : "Could not reach server");
           this.$store.commit("SET_ERROR", message);
-          console.error(message);
+          // console.error(message);
         });
     },
 
