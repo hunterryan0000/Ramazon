@@ -7,7 +7,7 @@ import LoginView from '../views/LoginView.vue'
 import LogoutView from '../views/LogoutView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import store from '../store/index'
-
+ 
 Vue.use(Router)
 
 /**
