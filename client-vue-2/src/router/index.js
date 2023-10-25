@@ -70,7 +70,7 @@ const router = new Router({
       }
     },
     {
-      path: "/register",
+      path: "/register", 
       name: "register",
       component: RegisterView,
       meta: {
