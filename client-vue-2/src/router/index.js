@@ -17,7 +17,7 @@ Vue.use(Router)
  * It also is used to detect whether or not a route requires the user to have first authenticated.
  * If the user has not yet authenticated (and needs to) they are redirected to /login
  * If they have (or don't need to) they're allowed to go about their way.
- */
+ */ 
 
 const router = new Router({
   mode: 'history',
